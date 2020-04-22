@@ -18,6 +18,7 @@ const FriendsList = ()=> {
     return (
         <div>
             <h2>Hello Friends!</h2>
+            <Link to="/add-friend">ADD FRIENDS</Link>
             {friends.map(friend => {
                return <div key={friend.id}>
                     <h3>Name: {friend.name}</h3>
