@@ -25,7 +25,8 @@ export class Login extends Component {
         .post('/api/login', this.state.credentials)
         .then(res => {
             console.log(res.data)
-          localStorage.setItem('token', JSON.stringify(res.data.payload))  
+          localStorage.setItem('token', JSON.stringify(res.data.payload))
+          this.props.history.push('/protected');  
         } )
         .catch(err => console.log({ err }))
     }
