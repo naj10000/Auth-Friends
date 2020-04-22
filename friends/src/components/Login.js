@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 
 export class Login extends Component {
@@ -20,6 +21,13 @@ export class Login extends Component {
 
     login = e => {
         e.preventDefault();
+        axiosWithAuth()
+        .post('/api/login', this.state.credentials)
+        .then(res => {
+            console.log(res.data)
+          localStorage.setItem('token', JSON.stringify(res.data.payload))  
+        } )
+        .catch(err => console.log({ err }))
     }
 
     render() {
