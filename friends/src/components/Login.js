@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { axiosWithAuth } from '../utils/axiosWithAuth'
+
 
 
 export class Login extends Component {
@@ -24,17 +25,18 @@ export class Login extends Component {
         axiosWithAuth()
         .post('/api/login', this.state.credentials)
         .then(res => {
-            console.log(res.data)
+            console.log("axios error", res.data.payload,)
           localStorage.setItem('token', JSON.stringify(res.data.payload))
           this.props.history.push('/protected');  
         } )
-        .catch(err => console.log({ err }))
+        .catch(err => console.log("this is the error",{ err }))
     }
 
     render() {
         return (
-            <div>
+            <div >
                 <form onSubmit={this.login}>
+                    
                     <input
                     type="text"
                     name="username"
